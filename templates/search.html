@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <form action="/search" method="POST">
+                <div class="form-group">
+                    <input type="text" name="term" placeholder="Ingresa término a evaluar sentimiento" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success btn-block">
+                    Buscar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
