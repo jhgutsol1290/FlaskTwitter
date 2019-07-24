@@ -36,7 +36,7 @@ def search():
                 quantities = []
                 term = request.form['term']
                 term = str(term)
-                tweets = tweepy.Cursor(api.search, q=term, lang = 'es', tweet_mode='extended').items(500)
+                tweets = tweepy.Cursor(api.search, q=term, lang = 'es', tweet_mode='extended').items(100)
                 tweets_translated = TranslateTweets()
                 tweets_full_text = tweets_translated.get_full_text_tweet(tweets)
                 tweets_translated_array = tweets_translated.translate_tweets(tweets_full_text)
@@ -69,5 +69,5 @@ def search():
                 print(e)
 
 if __name__ == '__main__':
-    app.run(port = 4000)
+    app.run(port = 4000, host='0.0.0.0', debug=True)
     

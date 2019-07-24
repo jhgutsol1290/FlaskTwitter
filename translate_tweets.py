@@ -30,25 +30,31 @@ class TranslateTweets():
         return self.array_of_tweets_and_score
     
     def order_array_of_tweets_neutral(self, array_tweets_score):
-        array_neutral = []
+        array_neutral = [element for element in array_tweets_score if element['score'] == 0]
+        return array_neutral
+        """ array_neutral = []
         for element in array_tweets_score:
             if element['score'] == 0:
                 array_neutral.append(element)
-        return array_neutral
+        return array_neutral """
 
     def order_array_of_tweets_postive(self, array_tweets_score):
-        array_positive = []
+        array_positive = [element for element in array_tweets_score if element['score'] > 0]
+        return array_positive
+        """ array_positive = []
         for element in array_tweets_score:
             if element['score'] > 0:
                 array_positive.append(element)
-        return array_positive
+        return array_positive """
 
     def order_array_of_tweets_negative(self, array_tweets_score):
-        array_negative = []
+        array_negative = [element for element in array_tweets_score if element['score'] < 0]
+        return array_negative
+        """ array_negative = []
         for element in array_tweets_score:
             if element['score'] < 0:
                 array_negative.append(element)
-        return array_negative
+        return array_negative """
     
     def text_neutral_only(self, array_neutral):
         text_neutral = [comment['text'] for comment in array_neutral]
@@ -63,13 +69,15 @@ class TranslateTweets():
         return text_negative
 
     def delete_zeros(self):
-        new_score_list = []
+        new_score_list = [score for score in self.array_of_tweets_translated if score != 0]
+        return new_score_list
+        """ new_score_list = []
         for score in self.array_of_tweets_translated:
             if score == 0:
                 pass
             else:
                 new_score_list.append(score)
-        return new_score_list
+        return new_score_list """
   
     def calculate_percentage_neutral(self):
         neutral_scores = [score for score in self.array_of_tweets_translated if score == 0]
