@@ -42,36 +42,47 @@
         <div class="col-md-12">
             <p class="display-4">Porcentajes:</p>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card">
                         <div class="card-header">
                             Positivo
                         </div>
                         <div class="card-body">
                             <p>{{data[3]['percentages'][1]}} %</p>
-                            <p>Total: {{data[4]['quantities'][1]}} tweets</p>
+                            <p id="positive-total">Total: {{data[4]['quantities'][1]}} tweets</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card">
                         <div class="card-header">
                             Negativo
                         </div>
                         <div class="card-body">
                             <p>{{data[3]['percentages'][2]}} %</p>
-                            <p>Total: {{data[4]['quantities'][2]}} tweets</p>
+                            <p id="negative-total">Total: {{data[4]['quantities'][2]}} tweets</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card">
                         <div class="card-header">
                             Neutro
                         </div>
                         <div class="card-body">
                             <p>{{data[3]['percentages'][0]}} %</p>
-                            <p>Total: {{data[4]['quantities'][0]}} tweets</p>
+                            <p id="neutral-total">Total: {{data[4]['quantities'][0]}} tweets</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            Total
+                        </div>
+                        <div class="card-body">
+                            <p>Porcentaje: 100 %</p>
+                            <p id="total-count">Tweets: {{data[4]['quantities'][3]}} </p>
                         </div>
                     </div>
                 </div>
