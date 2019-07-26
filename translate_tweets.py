@@ -10,14 +10,6 @@ class TranslateTweets():
         self.array_of_tweets_translated = []
         self.array_of_tweets_and_score = []
         self.tweets_arr = []
-
-    def get_scores_list(self, tweets):
-        newList = [tweet.full_text for tweet in tweets]
-        for comment in newList:
-            score = client.sentiment(comment, lang='es')
-            self.array_of_tweets_translated.append(score['score'])
-            self.array_of_tweets_and_score.append({"text": comment, "score": score})
-        return self.array_of_tweets_translated
     
     def get_full_text_tweet(self, tweets):
         for tweet_info in tweets:

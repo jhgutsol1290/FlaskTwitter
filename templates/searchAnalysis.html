@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Repustate</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <form action="/analysis/search" method="POST">
+                <div class="form-group">
+                    <input type="text" name="term" placeholder="Ingresa término a evaluar sentimiento" class="form-control" autofocus required>
+                </div>
+                <button type="submit" class="btn btn-dark btn-block">
+                    Buscar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
