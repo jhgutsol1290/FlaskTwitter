@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from translate_tweets import TranslateTweets
 from twitter_client import TwitterAuthenticator
+from sentiment_analyzer import SentimentAnalyzer
 import tweepy
 import seaborn as sns
 import numpy as np
@@ -35,9 +36,12 @@ def search():
                 percentages = []
                 quantities = []
                 term = request.form['term']
+                term = term + ' -filter:retweets'
                 term = str(term)
-                tweets = tweepy.Cursor(api.search, q=term, lang = 'es', tweet_mode='extended').items(100)
+                print(term)
+                tweets = tweepy.Cursor(api.search, q=term, lang = 'es', tweet_mode='extended').items(150)
                 tweets_translated = TranslateTweets()
+                #tweets_full_text = tweets_translated.get_scores_list(tweets)
                 tweets_full_text = tweets_translated.get_full_text_tweet(tweets)
                 tweets_translated_array = tweets_translated.translate_tweets(tweets_full_text)
                 array_tweets_score = tweets_translated.array_of_tweets_and_score_method()

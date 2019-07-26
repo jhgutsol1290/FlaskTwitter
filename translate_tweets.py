@@ -1,5 +1,8 @@
 from textblob import TextBlob
 import numpy as np
+from repustate import Client
+
+client = Client(api_key = 'c53d0c7b21b8afb62c4c112a9f4f1070ee6ff308', version = 'v4')
 
 
 class TranslateTweets():
@@ -7,6 +10,14 @@ class TranslateTweets():
         self.array_of_tweets_translated = []
         self.array_of_tweets_and_score = []
         self.tweets_arr = []
+
+    def get_scores_list(self, tweets):
+        newList = [tweet.full_text for tweet in tweets]
+        for comment in newList:
+            score = client.sentiment(comment, lang='es')
+            self.array_of_tweets_translated.append(score['score'])
+            self.array_of_tweets_and_score.append({"text": comment, "score": score})
+        return self.array_of_tweets_translated
     
     def get_full_text_tweet(self, tweets):
         for tweet_info in tweets:
