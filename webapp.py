@@ -25,8 +25,6 @@ api = twitter_authenticator.twitterClient()
 
 @app.route('/')
 def home():   
-    #tweets_translated = TranslateTweets()
-    #tweets_translated_array = tweets_translated.translate_tweets(tweets)
     return render_template('search.html')
 
 @app.route('/search', methods=['POST', 'GET'])
