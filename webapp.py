@@ -90,14 +90,16 @@ def analysisSearch():
                         query_search = ''
                         term = request.form['term']     #Term that user types
                         retweets = request.form['retweets']     #if user wants analysis with or without retweets
+                        items = request.form['items']
                         retweets = int(retweets)                #converting retweets in int
+                        items = int(items)
                         if retweets == 1:                       #if retweets equals 1 we will exclude retweets and work only with original tweets
                                 query_search = term + ' -filter:retweets'
                                 query_search = str(query_search)
                         elif retweets == 2:                     #condition if retweets equals 2 we will work with original tweets and retweets
                                 query_search = term
                                 query_search = str(query_search)
-                        tweets = tweepy.Cursor(api.search, q=query_search, lang = 'es', tweet_mode='extended').items(10)       #getting 150 tweets
+                        tweets = tweepy.Cursor(api.search, q=query_search, lang = 'es', tweet_mode='extended').items(items)       #getting 150 tweets
                         sentiment_analyzer = SentimentAnalyzer()        #instanciate the class SentimentAnalyzer
                         scores_list = sentiment_analyzer.get_scores_list(tweets)        #get the list of scores without zeros
                         array_tweets_score = sentiment_analyzer.array_of_tweets_and_score_method()      #get array of objects with text and score
